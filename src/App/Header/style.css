@@ -1,0 +1,12 @@
+.header {
+  text-align: center;
+}
+div {
+  /* border: 1px solid green; */
+}
+.city-input {
+  width: 100%;
+}
+.col-city-input {
+  padding: 0 !important;
+}
