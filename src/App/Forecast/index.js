@@ -19,6 +19,7 @@ const Forecast = () => {
         hi={days(i, 'high_f')}
         low={days(i, 'low_f')}
         conditions={days(i, 'conditions')}
+        humidity={days(i, 'humidity')}
         wind={days(i, 'wind_mph')}
       />
 
