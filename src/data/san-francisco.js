@@ -1,4 +1,4 @@
-const sanFrancisco = {
+const data = {
   "response": {
     "version": "0.1",
     "termsofService": "http://www.wunderground.com/weather/api/d/terms.html",
@@ -368,7 +368,7 @@ const sanFrancisco = {
           "icon": "nt_rain",
           "icon_url": "http://icons.wxug.com/i/c/k/nt_rain.gif",
           "title": "Wednesday Night",
-          "fcttext": "Rain early...then remaining cloudy with showers late. Low 46F. Winds WSW at 10 to 15 mph. Chance of rain 80%.",
+          "fcttext": "Rain early..then remaining cloudy with showers late. Low 46F. Winds WSW at 10 to 15 mph. Chance of rain 80%.",
           "fcttext_metric": "",
           "pop": "80"
         },
@@ -712,4 +712,49 @@ const sanFrancisco = {
   }
 }
 
-export default { sanFrancisco }
+export const location = data.current_observation.display_location.full
+export const country = data.current_observation.display_location.country
+export const zip = data.current_observation.display_location.zip
+export const latitude = data.current_observation.display_location.latitude
+export const longitude = data.current_observation.longitude
+export const time = data.current_observation.observation_time
+export const temp_f = data.current_observation.temp_f
+export const temp_c = data.current_observation.temp_c
+export const relative_humidity = data.current_observation.relative_humidity
+export const wind_dir = data.current_observation.wind_dir
+export const wind_mph = data.current_observation.wind_mph
+export const wind_gust_mph = data.current_observation.wind_gust_mph
+export const wind_kph = data.current_observation.wind_kph
+export const wind_gust_kph = data.current_observation.wind_gust_kph
+export const pressure_mb = data.current_observation.pressure_mb
+export const pressure_in = data.current_observation.pressure_in
+export const pressure_trend = data.current_observation.pressure_trend
+export const feelslike_f = data.current_observation.feelslike_f
+export const feelslike_c = data.current_observation.feelslike_c
+export const icon_url = data.current_observation.icon_url
+
+export const days = (index, item) => {
+  const fd = data.forecast.simpleforecast.forecastday[index]
+  switch (item) {
+    case 'date':
+      return `${fd.date.weekday_short} ${fd.date.month}, ${fd.date.day}`
+    case 'high_f':
+      return fd.high.fahrenheit
+    case 'high_c':
+      return fd.high.celsius
+    case 'low_f':
+      return fd.low.fahrenheit
+    case 'low_c':
+      return fd.low.celsius
+    case 'wind_mph':
+      return fd.avewind.mph
+    case 'wind_kph':
+      return fd.avgwind.kph
+    case 'humidity':
+      return fd.avehumidity
+    default:
+      return fd[item]
+  }
+}
+
+export default { location, country, zip, latitude, longitude, time, temp_f, temp_c, relative_humidity, wind_dir, wind_mph, wind_gust_mph, wind_kph, wind_gust_kph, pressure_mb, pressure_in, pressure_trend, feelslike_f, feelslike_c, icon_url, days }

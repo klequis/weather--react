@@ -5,6 +5,7 @@ import LocationLookup from './LocationLookup'
 import CurrentConditions from './CurrentConditions'
 import Forecast from './Forecast'
 import Footer from './Footer'
+import Test from './Test'
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div id='App'>
+        <Test />
         <Header />
         <LocationLookup />
         <CurrentConditions />
