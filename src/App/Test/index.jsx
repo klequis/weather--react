@@ -1,5 +1,5 @@
 import React from 'react'
-import { location, country, zip, latitude, longitude, time, temp_f, temp_c, relative_humidity, wind_dir, wind_mph, wind_gust_mph, wind_kph, wind_gust_kph, pressure_mb, pressure_in, pressure_trend, feelslike_f, feelslike_c, icon_url, day } from '../../data/san-francisco'
+import { location, country, zip, latitude, longitude, time, temp_f, temp_c, relative_humidity, wind_dir, wind_mph, wind_gust_mph, wind_kph, wind_gust_kph, pressure_mb, pressure_in, pressure_trend, feelslike_f, feelslike_c, icon_url } from '../../data/san-francisco'
 
 const Test = () => {
   return (

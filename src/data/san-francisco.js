@@ -757,4 +757,31 @@ export const days = (index, item) => {
   }
 }
 
+/*
+    units: imperial || metric
+ */
+export const forecastDays = (units) => {
+  const fd = data.forecast.simpleforecast.forecastday
+  // console.log('fd', fd)
+  const imperial = units === 'imperial'
+  return fd.map((d) => {
+    return {
+      date: `${d.date.weekday_short} ${d.date.month}, ${d.date.day}`,
+      icon_url: d.icon_url,
+      hi: imperial
+        ? d.high.fahrenheit
+        : d.high.celsius,
+      low: imperial
+        ? d.high.fahrenheit
+        : d.high.celsius,
+      conditions: fd.conditions,
+      humidity: fd.avehumidity,
+      wind: imperial
+        ? d.avewind.mph
+        : d.avewind.kph
+    }
+  })
+
+}
+
 export default { location, country, zip, latitude, longitude, time, temp_f, temp_c, relative_humidity, wind_dir, wind_mph, wind_gust_mph, wind_kph, wind_gust_kph, pressure_mb, pressure_in, pressure_trend, feelslike_f, feelslike_c, icon_url, days }
