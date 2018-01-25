@@ -7,15 +7,14 @@ const CurrentConditions = () => {
   return (
     <div id='CurrentConditions'>
       <h2>Current Conditions</h2>
-      <img src={icon_url} alt='cloudy' />
       <ul>
+        <li><img src={icon_url} alt='cloudy' /></li>
         <li>{conditions}</li>
-        <li>{temp_f} F</li>
+        <li>Temperature: {temp_f} F</li>
         <li>Feels like: {feelslike_f} F</li>
-        <li>Pressure: {pressure_in} in</li>
-        <li>Relative humidity: {relative_humidity}%</li>
         <li>Wind: West at 0 kph</li>
-        <li>Gusts: {wind_gust_mph} kph</li>
+        <li>Relative humidity: {relative_humidity}%</li>
+        <li>Pressure: {pressure_in} in</li>
       </ul>
     </div>
   )
