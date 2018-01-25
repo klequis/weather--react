@@ -3,7 +3,7 @@ import './style.css'
 
 const Day = ({ date, icon_url, hi, low, conditions, humidity, wind }) => {
   return (
-    <div id='Day'>
+    <div id='Day' className='text-center'>
       <div>{date}</div>
       <div><img src={icon_url} alt='conditions' /></div>
       <div>{hi} / {low}</div>

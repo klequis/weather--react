@@ -3,7 +3,7 @@ import './style.css'
 
 const LocationDetails = ({ location, elevation, latitude, longitude }) => {
   return (
-    <div>
+    <div className='section'>
       <h2>Location Data for {location}</h2>
       <ul>
         <li>Elevation: {elevation}</li>

@@ -712,26 +712,29 @@ const data = {
   }
 }
 
-export const location = data.current_observation.display_location.full
-export const country = data.current_observation.display_location.country
-export const zip = data.current_observation.display_location.zip
-export const latitude = data.current_observation.display_location.latitude
-export const longitude = data.current_observation.longitude
-export const time = data.current_observation.observation_time
-export const temp_f = data.current_observation.temp_f
-export const temp_c = data.current_observation.temp_c
-export const relative_humidity = data.current_observation.relative_humidity
-export const wind_dir = data.current_observation.wind_dir
-export const wind_mph = data.current_observation.wind_mph
-export const wind_gust_mph = data.current_observation.wind_gust_mph
-export const wind_kph = data.current_observation.wind_kph
-export const wind_gust_kph = data.current_observation.wind_gust_kph
-export const pressure_mb = data.current_observation.pressure_mb
-export const pressure_in = data.current_observation.pressure_in
-export const pressure_trend = data.current_observation.pressure_trend
-export const feelslike_f = data.current_observation.feelslike_f
-export const feelslike_c = data.current_observation.feelslike_c
-export const icon_url = data.current_observation.icon_url
+const co = data.current_observation
+const dl = co.display_location
+export const conditions = co.weather
+export const country = dl.country
+export const feelslike_c = co.feelslike_c
+export const feelslike_f = co.feelslike_f
+export const icon_url = co.icon_url
+export const latitude = dl.latitude
+export const location = dl.full
+export const longitude = co.longitude
+export const pressure_in = co.pressure_in
+export const pressure_mb = co.pressure_mb
+export const pressure_trend = co.pressure_trend
+export const relative_humidity = co.relative_humidity
+export const temp_c = co.temp_c
+export const temp_f = co.temp_f
+export const datetime = co.observation_time
+export const wind_dir = co.wind_dir
+export const wind_gust_kph = co.wind_gust_kph
+export const wind_gust_mph = co.wind_gust_mph
+export const wind_kph = co.wind_kph
+export const wind_mph = co.wind_mph
+export const zip = dl.zip
 
 export const days = (index, item) => {
   const fd = data.forecast.simpleforecast.forecastday[index]
@@ -758,11 +761,11 @@ export const days = (index, item) => {
 }
 
 /*
-    units: imperial || metric
+    units: 'imperial' || 'metric'
+    return: array
  */
 export const forecastDays = (units) => {
   const fd = data.forecast.simpleforecast.forecastday
-  // console.log('fd', fd)
   const imperial = units === 'imperial'
   return fd.map((d) => {
     return {
@@ -784,4 +787,4 @@ export const forecastDays = (units) => {
 
 }
 
-export default { location, country, zip, latitude, longitude, time, temp_f, temp_c, relative_humidity, wind_dir, wind_mph, wind_gust_mph, wind_kph, wind_gust_kph, pressure_mb, pressure_in, pressure_trend, feelslike_f, feelslike_c, icon_url, days }
+export default { location, country, zip, latitude, longitude, datetime, temp_f, temp_c, relative_humidity, wind_dir, wind_mph, wind_gust_mph, wind_kph, wind_gust_kph, pressure_mb, pressure_in, pressure_trend, feelslike_f, feelslike_c, icon_url, days, conditions }
