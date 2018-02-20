@@ -2,15 +2,22 @@ import React from 'react'
 import './style.css'
 import iCloudy from './cloudy.gif'
 
-const CurrentConditions = () => {
+const CurrentConditions = ({ currentConditions }) => {
+  console.log('currentConditions: ', currentConditions.current_observation);
+  /*const { weather, icon_url, temp_c,
+    dewpoint_c, feelslike_c, pressure_mp, relative_humidity, uv,
+    wind, gusts, windchill_c } = currentConditions.current_observation;
+    */
+  // const { weather } = currentConditions.current_observation;
+
   return (
     <div id='CurrentConditions'>
       <h2>Current Conditions</h2>
       <img src={iCloudy} alt='cloudy' />
       <ul>
-        <li>Overcast</li>
-        <li>6.4 C</li>
-        <li>Duepoint: 6 C</li>
+        <li>weather</li>
+        <li>temp_c</li>
+        <li>dewpoint_c</li>
         <li>Feels like: 6 C</li>
         <li>Pressure: 1026 mp 0</li>
         <li>Relative humidity: 98%</li>
