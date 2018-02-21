@@ -4,12 +4,13 @@ import iCloudy from './cloudy.gif'
 
 const CurrentConditions = ({ currentConditions }) => {
 
-  console.log('currentConditions', currentConditions)
+
 
   if (currentConditions === null) {
+    console.log('return null')
     return null
   }
-
+  console.log('currentConditions', currentConditions === null)
   return (
     <div id='CurrentConditions'>
       <h2>Current Conditions</h2>
