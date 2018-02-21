@@ -87,9 +87,7 @@ class App extends Component {
       location: jsonData.current_observation.display_location,
       //days: jsonData.forecast.simpleforecast.forecastday,
     };
-    // console.log('o  :', o);
-    // console.log('o.current_observation: ', o.current_observation.station_id);
-    // console.log('o.current_observation-icon: ', o.current_observation.icon);
+
     return o
   }
 
