@@ -3,12 +3,12 @@ import './style.css'
 import iCloudy from './cloudy.gif'
 
 const CurrentConditions = ({ currentConditions }) => {
-  console.log('currentConditions: ', currentConditions.current_observation);
-  /*const { weather, icon_url, temp_c,
-    dewpoint_c, feelslike_c, pressure_mp, relative_humidity, uv,
-    wind, gusts, windchill_c } = currentConditions.current_observation;
-    */
-  // const { weather } = currentConditions.current_observation;
+
+  console.log('currentConditions', currentConditions)
+
+  if (currentConditions === null) {
+    return null
+  }
 
   return (
     <div id='CurrentConditions'>

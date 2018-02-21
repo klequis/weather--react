@@ -26,7 +26,9 @@ class App extends Component {
       <div id='App'>
         <Header />
         <LocationLookup />
-        <CurrentConditions currentConditions={this.state.weather} />
+        <CurrentConditions
+          currentConditions={this.state.weather}
+        />
         <Forecast />
         <Footer />
       </div>
@@ -39,14 +41,20 @@ class App extends Component {
 
     return fetch(url)
       .then((data) => {
-        this.formatWeather(data);
-      });
+        return this.formatWeather(data);
+      })
+      .then((data) => {
+        // console.log('data', data)
+        this.setState({
+          weather: data,
+        })
+      })
   }
 
 
   async formatWeather(data) {
     const jsonData = await data.json();
-    console.log('jsonData: ', jsonData);
+
     const o = {
       branding: jsonData.current_observation.image,
       current_observation: {
@@ -79,15 +87,11 @@ class App extends Component {
       location: jsonData.current_observation.display_location,
       //days: jsonData.forecast.simpleforecast.forecastday,
     };
-    console.log('o  :', o);
-    console.log('o.current_observation: ', o.current_observation.station_id);
-    console.log('o.current_observation-icon: ', o.current_observation.icon);
-    this.setState({
-      weather: o
-    });
+    // console.log('o  :', o);
+    // console.log('o.current_observation: ', o.current_observation.station_id);
+    // console.log('o.current_observation-icon: ', o.current_observation.icon);
+    return o
   }
 
 }
 export default App
-
-
