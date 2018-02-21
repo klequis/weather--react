@@ -9,7 +9,7 @@ const Day = ({ date, img, hi, low, conditions, humidity, wind }) => {
       <div>{hi} / {low}</div>
       <div>{conditions}</div>
       <div>{humidity}</div>
-      <div>{wind}</div>
+      <div>{wind} kph</div>
     </div>
   )
 }

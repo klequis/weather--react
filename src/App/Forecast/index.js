@@ -1,29 +1,30 @@
 import React from 'react'
 import './style.css'
-import iCloudy from './cloudy.gif'
+// import iCloudy from './cloudy.gif'
 import Day from './Day'
 
-const Forecast = () => {
-  return (
+const Forecast = ({ forecastData }) => {
+  if (forecastData === null) {
+    console.log('return null')
+    return null
+  }
+
+  const { days } = forecastData;
+  const forecastDays = days.map((day, index) =>
     <div>
       <h2>Forecast</h2>
       <Day
-        date='Jan 23'
-        img={iCloudy}
-        hi='14'
-        low='4'
-        conditions='Partly Cloudy'
-        wind='6 kph'
-      />
-      <Day
-        date='Jan 24'
-        img={iCloudy}
-        hi='14'
-        low='4'
-        conditions='Partly Cloudy'
-        wind='6 kph'
+        key={index}
+        date={day.date.pretty}
+        img={day.icon_url}
+        hi={day.high.fahrenheit}
+        low={day.low.fahrenheit}
+        conditions={day.conditions}
+        wind={day.avewind.kph}
       />
     </div>
-  )
+  );
+
+  return forecastDays;
 }
 export default Forecast

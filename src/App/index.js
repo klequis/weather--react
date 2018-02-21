@@ -13,11 +13,13 @@ class App extends Component {
       currentCity: 'San Ramon',
       weather: null,
       units: '',
+      forecast: null,
     }
   }
 
   componentDidMount() {
     this.getWeather(this.state.currentCity);
+    this.getForecast(this.state.currentCity);
   }
 
   render() {
@@ -29,7 +31,9 @@ class App extends Component {
         <CurrentConditions
           currentConditions={this.state.weather}
         />
-        <Forecast />
+        <Forecast
+          forecastData={this.state.forecast}
+        />
         <Footer />
       </div>
     )
@@ -44,14 +48,35 @@ class App extends Component {
         return this.formatWeather(data);
       })
       .then((data) => {
-        // console.log('data', data)
         this.setState({
           weather: data,
         })
       })
   }
 
+  getForecast(city) {
+    const weatherURLRoot = 'http://api.wunderground.com/api/85bddf9c5a474df5/forecast/q/CA/';
+    const url = `${weatherURLRoot}${city}.json`;
 
+    return fetch(url)
+      .then((data) => {
+        return this.formatForecast(data);
+      })
+      .then((data) => {
+        this.setState({
+          forecast: data,
+        })
+      })
+  }
+
+  async formatForecast(data) {
+    const jsonData = await data.json();
+    const o = {
+      days: jsonData.forecast.simpleforecast.forecastday,
+    };
+    console.log('o : ', o);
+    return o;
+  }
   async formatWeather(data) {
     const jsonData = await data.json();
 
@@ -85,11 +110,9 @@ class App extends Component {
         icon_url: jsonData.current_observation.icon_url,
       },
       location: jsonData.current_observation.display_location,
-      //days: jsonData.forecast.simpleforecast.forecastday,
     };
 
     return o
   }
-
 }
 export default App
