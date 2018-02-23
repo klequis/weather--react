@@ -11,7 +11,7 @@ class App extends Component {
     super(props)
     this.state = {
       currentCity: 'San Ramon',
-      weather: null,
+      currentConditions: null,
       units: '',
       forecast: null,
     }
@@ -29,7 +29,7 @@ class App extends Component {
         <Header />
         <LocationLookup />
         <CurrentConditions
-          currentConditions={this.state.weather}
+          currentConditions={this.state.currentConditions}
         />
         <Forecast
           forecastData={this.state.forecast}
@@ -49,7 +49,7 @@ class App extends Component {
       })
       .then((data) => {
         this.setState({
-          weather: data,
+          currentConditions: data,
         })
       })
   }
@@ -77,6 +77,7 @@ class App extends Component {
     console.log('o : ', o);
     return o;
   }
+
   async formatWeather(data) {
     const jsonData = await data.json();
 
