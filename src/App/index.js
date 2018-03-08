@@ -39,19 +39,24 @@ class App extends Component {
     )
   }
 
-  getWeather(city) {
+  async getWeather(city) {
     const weatherURLRoot = 'http://api.wunderground.com/api/85bddf9c5a474df5/geolookup/conditions/q/CA/';
     const url = `${weatherURLRoot}${city}.json`;
 
-    return fetch(url)
-      .then((data) => {
-        return this.formatWeather(data);
-      })
-      .then((data) => {
-        this.setState({
-          currentConditions: data,
-        })
-      })
+    // return fetch(url)
+    //   .then((data) => {
+    //     return this.formatWeather(data);
+    //   })
+    //   .then((data) => {
+    //     this.setState({
+    //       currentConditions: data,
+    //     })
+    //   })
+    const result = await fetch(url);
+    const data = await this.formatWeather(result);
+    this.setState({
+      currentConditions: data,
+    });
   }
 
   getForecast(city) {
@@ -67,6 +72,7 @@ class App extends Component {
           forecast: data,
         })
       })
+
   }
 
   async formatForecast(data) {
